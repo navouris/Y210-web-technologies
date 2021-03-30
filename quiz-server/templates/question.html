@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %} Ερώτηση {{id}} {% endblock title %} 
+{% block body %}
+    <h1>Python-Quiz - Χρήστης: {{ user_name }}</h1>
+    <h2>Ερώτηση αριθμ. {{ session["count"] }} / {{ id }} </h2>
+    {% if disabled %}
+    <form action=/q/{{next_question}}>
+    {% else %}
+    <form action=/q/{{id}}>
+    {% endif %}
+        <div id="quiz">
+        {{ question | safe }}
+        </div>
+        Απάντηση (επιλέξτε):
+        <ol>
+        {% for no,reply in replies.items() %}  
+            <li><input type="radio" name="answer" required value={{no}} {{disabled}}> {{ reply }}</li>
+        {% endfor %}
+        </ol>
+        <div id="feedback"
+        {% if feedback == "Σωστή απάντηση" %}
+        class = "green"
+        {% else %}
+        class = "red"
+        {% endif %}
+        >{{ feedback }} </div>
+        <button>{{button}}</button>
+        
+    </form>
+{% endblock body %}

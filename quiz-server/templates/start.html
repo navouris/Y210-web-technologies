@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %} Έναρξη {% endblock title %} 
+{% block body %}
+    <h1> Παίκτης: {{ name }} </h1>
+    <h3> Προηγούμενα παιχνίδια </h3>
+    <pre>
+        {{ history }}
+    </pre>
+    <form>
+        <input type="hidden" name="start" value="yes">
+        <button>Έναρξη</button>
+    </form>
+{% endblock body %}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %}{% endblock title %} </title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 5px;
+        }
+        #container{
+            margin: 1rem;
+            padding: 0.5rem;
+            border: 1px solid goldenrod;
+        }
+
+        #quiz {
+            padding: 1rem;
+            margin: 1rem;
+            border: 1px solid gainsboro;
+
+        }
+        pre {
+            background-color: ghostwhite;
+            padding-left: 1rem;
+        }
+        h1 {
+            font-size: 1.5rem;
+            color:goldenrod;}
+        li {
+            margin: 0.5rem;
+            font-size: 0.8rem;
+            border: 1px sold rgb(155, 139, 245);
+        }
+        #feedback {
+            font-size: 2rem;
+        }
+        .red {
+            color:indianred;
+        }
+        .green {
+            color:lightseagreen;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        {% block body %} 
+        {% endblock body %}
+    </div>
+</body>
+</html>
