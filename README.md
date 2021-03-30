@@ -4,6 +4,15 @@
  
  * [Σημειώσεις](https://github.com/navouris/Y210-web-technologies/blob/main/handouts/Y210-Avouris-web-technologies-notes.md)
  * [Κώδικας εφαρμογής pythonquiz](https://github.com/navouris/Y210-web-technologies/tree/main/pythonquiz)
- * [Κώδικας εφαρμογής quiz-server]()
+ * [Κώδικας εφαρμογής quiz-server](https://github.com/navouris/Y210-web-technologies/tree/main/quiz-server)
 
-Η εφαρμογή έχει εγκατασταθεί στο heroku
+Η ενότητα αυτή περιλαμβάνει τα εξής θέματα:
+
+- Εισαγωγή στο διαδίκτυο
+- HTTP
+- HTML/CSS
+- Flask
+- Jinja2
+- ανάπτυξη εφαρμογής
+- φιλοξενία εφαρμογής στο heroku
+
