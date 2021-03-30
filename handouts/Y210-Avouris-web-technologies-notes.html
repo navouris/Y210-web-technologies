@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Y210-Avouris-web-technologies-notes.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%CE%B5%CE%B9%CF%83%CE%B1%CE%B3%CF%89%CE%B3%CE%AE-%CF%83%CF%84%CE%B9%CF%82-%CF%84%CE%B5%CF%87%CE%BD%CE%BF%CE%BB%CE%BF%CE%B3%CE%AF%CE%B5%CF%82-%CF%84%CE%BF%CF%85-%CE%B4%CE%B9%CE%B1%CE%B4%CE%B9%CE%BA%CF%84%CF%8D%CE%BF%CF%85">Εισαγωγή στις τεχνολογίες του διαδικτύου</h1>
+<h4 id="ecey210-%CE%B5%CE%B9%CF%83%CE%B1%CE%B3%CF%89%CE%B3%CE%AE-%CF%83%CF%84%CE%B7%CE%BD-%CE%B5%CF%80%CE%B9%CF%83%CF%84%CE%AE%CE%BC%CE%B7-%CF%84%CE%BF%CF%85-%CE%B7%CE%BB%CE%B5%CE%BA%CF%84%CF%81%CE%BF%CE%BB%CF%8C%CE%B3%CE%BF%CF%85-%CE%BC%CE%B7%CF%87%CE%B1%CE%BD%CE%B9%CE%BA%CE%BF%CF%8D">ECE_Y210 Εισαγωγή στην Επιστήμη του Ηλεκτρολόγου Μηχανικού</h4>
+<p>Το αντικείμενο αυτής της ενότητας είναι να εξετάσουμε τις βασικές τεχνολογίες που χρησιμοποιούνται στις εφαρμογές του διαδικτύου και να δούμε ένα παράδειγμα μιας εφαρμογής με χρήση των τεχνολογιών HTML/CSS/JavaScript στον πελάτη που να εξυπηρετείται από μια εφαρμογή Python στον server.</p>
+<p>Το <strong>διαδίκτυο (internet)</strong> είναι ένα σύνολο από πρωτόκολλα και υποδομές (δίκτυα) που επιτρέπουν τη διασύνδεση υπολογιστών και επικοινωνία μεταξύ εφαρμογών. Η πιο σημαντική εφαρμογή του διαδικτύου είναι ο <strong>παγκόσμιος ιστός (web)</strong>.</p>
+<img src="internet-cables.png">
+<p><a href="https://www.submarinecablemap.com/#/">χάρτης από το submarinecablemap.com</a></p>
+<p>Στις επόμενες ενότητες θα δούμε το πρωτόκολλο HTTP που είναι ο τρόπος επικοινωνίας browser/server, τη γλώσσα HTML/CSS, τη βιβλιοθήκη Flask που μάς επιτρέπει να δρομολογούμε και να ανταποκρινόμαστε σε αιτήματα που έρχονται από τον φυλλομετρητή στον εξυπηρετητή, τη γλώσσα Jinja2 που μάς επιτρέπει να σχεδιάζουμε ιστοσελίδες με παραμετρικό τρόπο και τέλος διανομή της εφαρμογής μας σε μια πλατφόρμα φιλοξένιάς της. Όλα αυτά θα γίνουν μέσα από ένα παράδειγμα ανάπτυξης μια εφαρμογής που ελέγχει τις γνώσεις μας στην Python.</p>
+<h2 id="div-style%22page-break-before-always%22"><div style="page-break-before: always;"></h2>
+</div>
+<h2 id="1-%CF%84%CE%BF-%CF%80%CF%81%CF%89%CF%84%CF%8C%CE%BA%CE%BF%CE%BB%CE%BB%CE%BF-http">1. Το πρωτόκολλο HTTP</h2>
+<p>Οι εφαρμογές του παγκόσμιου ιστού χρησιμοποιούν το πρωτόκολλο <strong>HTTP (hyper-text transfer protocol)</strong>, για την ανταλλαγή μηνυμάτων μεταξύ ενός <strong>πελάτη (browser)</strong> και ενός <strong>εξυπηρετητή (web server)</strong> οι οποίοι είναι οι δύο βασικοί κόμβοι των εφαρμογών του παγκόσμιου ιστού.</p>
+<p>Το πρωτόκολλο HTTP ορίστηκε πρώτη φορά το 1989 από τον Tim Berners-Lee. Σήμερα είμαστε στην έκδοση HTTP/2.
+Τα μηνύματα HTTP είναι δομημένα κείμενα, έχουμε δύο κατηγορίες μηνυμάτων:</p>
+<ul>
+<li>Μηνύματα <strong>αιτήματα</strong> (από τον φυλλομετρητή στον εξυπηρετητή): GET ή POST</li>
+<li>Μηνύματα <strong>αποκρίσεις</strong> (από τον εξυπηρετητή στον φυλλομετρητή).</li>
+</ul>
+<p>Ακολουθεί ένα πρόγραμμα που μάς επιτρέπει να εισάγουμε μια διεύθυνση URL και μάς επιστρέφει την κεφαλίδα της απόκρισης HTTP που λαμάνουμε. Χρησιμοποιεί τη βιβλιοθήκη requests.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># πρόγραμμα που ζητάει ένα url και επιστρέφει την κεφαλίδα της απόκρισης HTTP</span>
+<span class="hljs-keyword">import</span> requests
+
+<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+    url = input(<span class="hljs-string">'url:'</span>)
+    <span class="hljs-keyword">if</span> url == <span class="hljs-string">''</span>: <span class="hljs-keyword">break</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> url.startswith(<span class="hljs-string">'http'</span>):
+        url = <span class="hljs-string">'http://'</span>+ url
+    <span class="hljs-keyword">try</span>:
+        <span class="hljs-keyword">with</span> requests.get(url) <span class="hljs-keyword">as</span> response:
+            print(<span class="hljs-string">"\nRESPONSE STATUS: "</span>, response.status_code)
+            print(<span class="hljs-string">"RESPONSE HEADER"</span>)
+            <span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">in</span> response.headers.items():
+                print(<span class="hljs-string">"{:30s} {}"</span>.format(key, value))
+    <span class="hljs-keyword">except</span>:
+        print(<span class="hljs-string">'error opening'</span>, url)
+</div></code></pre>
+<p>Ένα παράδειγμα χρήσης:</p>
+<pre>
+url:http://hci.ece.upatras.gr/
+
+RESPONSE STATUS:  200
+RESPONSE HEADER
+Date                           Sat, 27 Mar 2021 12:30:29 GMT
+Server                         Apache/2.4.18 (Ubuntu)
+Set-Cookie                     language=en; expires=Sun, 27-Mar-2022 12:30:29 GMT; Max-Age=31536000; path=/
+Link                           <https://hci.ece.upatras.gr/wp-json/>; rel="https://api.w.org/"
+Vary                           Accept-Encoding
+Content-Encoding               gzip
+Content-Length                 9848
+Keep-Alive                     timeout=5, max=100
+Connection                     Keep-Alive
+Content-Type                   text/html; charset=UTF-8
+
+</pre>
+<p>Πειραμαστιστείτε με το πρόγραμμα αυτό στέλνοντας μηνύματα σε διάφορες διευθύνσεις του διαδικτύου, δέστε προσεκτικά την κεφαλίδα της απόκρισης που πήρατε, μπορείτε να βγάλετε συμπεράσματα για το τι τύπου είναι ο εξυπηρετητής που σάς απάντησε (είναι η κεφαλίδα <code>Server</code>), τι τύπου είναι η απόκριση, (<code>Content-Type</code>), αν επισυνάπτονται αρχεία cookies και τι διάρκεια ζωής έχουν (<code>Set-Cookie</code>), κλπ. )</p>
+<h4 id="%CF%83%CF%85%CE%BD%CE%B7%CE%B8%CE%B9%CF%83%CE%BC%CE%AD%CE%BD%CE%BF%CE%B9-%CE%BA%CF%89%CE%B4%CE%B9%CE%BA%CE%BF%CE%AF-%CF%83%CE%B5-%CE%BC%CE%B7%CE%BD%CF%8D%CE%BC%CE%B1%CF%84%CE%B1-%CE%B1%CF%80%CF%8C%CE%BA%CF%81%CE%B9%CF%83%CE%B7%CF%82-http">Συνηθισμένοι κωδικοί σε μηνύματα απόκρισης HTTP:</h4>
+<p>Στο προηγούμενο παράδειγμα παρατηρήσαμε ότι το Response status ήταν 200, αυτό σημαίνει ότι το μήνυμα μας το επεξεργάστηκε ο εξυπηρετητής με επιτυχία, ωστόσο έχει ενδιαφέρον να διερευνήσουμε τι άλλους κωδικούς κατάστασης της απόκρισης μπορεί να λάβουμε και ποια η σημασία των κωδικών αυτών.</p>
+<p>Παρακάτω ακολουθεί ένας συνοπτικός πίνακας.</p>
+<ul>
+<li>1xx: μήνυμα πληροφορίας</li>
+<li>2xx: κατάσταση επιτυχούς επεξεργασίας</li>
+<li>3xx: προώθηση του Client σε διαφορετικό URL</li>
+<li>4xx: σφάλμα προερχόμενο από τον Client</li>
+<li>5xx: σφάλμα προερχόμενο από τον Server</li>
+</ul>
+<h3 id="%CE%B1%CF%81%CF%87%CE%B9%CF%84%CE%B5%CE%BA%CF%84%CE%BF%CE%BD%CE%B9%CE%BA%CE%AE-%CE%B5%CF%86%CE%B1%CF%81%CE%BC%CE%BF%CE%B3%CF%8E%CE%BD-%CE%B4%CE%B9%CE%B1%CE%B4%CE%B9%CE%BA%CF%84%CF%8D%CE%BF%CF%85">Αρχιτεκτονική εφαρμογών διαδικτύου</h3>
+<p>Κλείνοντας την εισαγωγική ενότητα θα δώσουμε μια συνοπτική εικόνα της αρχιτεκτονικής μιας εφαρμογής του διαδικτύου με βάση και τις τεχνολογίες που θα χρησιμοποιήσουμε σε αυτή την ενότητα.</p>
+<img src="web-architecture.png">
+<p>Από την εικόνα αυτή παρατηρούμε πόσο σύνθετη είναι η αρχιτεκτονική μιας εφαρμογής διαδικτύου.</p>
+<p>Τα κύρια στοιχεία είναι ένας εξυπηρετητής (web server) που στο παράδειγμά μας θα χρησιμοποιήσουμε ένα τμήμα της βιβλιοθήκης Flask, όταν όμως φιλοξενήσουμε την εφαρμογή μας σε δημόσιο χώρο φιλοξενίας (Heroku) θα χρησιμοποιήσουμε τη βιβλιοθήκη Gurnicon της Python. Ένα άλλο στοιχείο της αρχιτεκτονικής είναι το πρωτόκολλο επικοινωνίας μεταξύ του εξυπηρετητή και της εφαρμογής μας που είναι το WSGI. Η ίδια η εφαρμογή που θα αναπτύξουμε θα είναι με χρήση της βιβλιοθήκης Flask, ενώ το περιεχόμενο των σελίδων που θα στείλουμε στον πελάτη θα είναι γραμμένο σε HTML/CSS/JavaScript.</p>
+<p>Στην επόμενη ενότητα θα κάνουμε μια σύντομη παρουσίαση των τεχνολογιών αυτών συγγραφής και μορφοποίησης ιστοσελίδων.</p>
+<div style="page-break-after: always;"></div>
+<h2 id="2-%CE%B7-%CE%B3%CE%BB%CF%8E%CF%83%CF%83%CE%B1-%CF%83%CF%85%CE%B3%CE%B3%CF%81%CE%B1%CF%86%CE%AE%CF%82-%CE%B9%CF%83%CF%84%CE%BF%CF%83%CE%B5%CE%BB%CE%AF%CE%B4%CF%89%CE%BD-html--%CE%B3%CE%BB%CF%8E%CF%83%CF%83%CE%B1-%CE%BC%CE%BF%CF%81%CF%86%CE%BF%CF%80%CE%BF%CE%AF%CE%B7%CF%83%CE%B7%CF%82-css">2. Η γλώσσα συγγραφής ιστοσελίδων HTML / γλώσσα μορφοποίησης CSS</h2>
+<p>H HTML είναι γλώσσα επισημείωσης περιεχομένου (markup) για την οργάνωση μιας ιστοσελίδας, με τη γλώσσα αυτή ορίζουμε το περιεχόμενο και τη δομή μιας ιστοσελίδας.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    	<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span>        
+        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Ο τίτλος<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">    
+            <span class="hljs-selector-tag">body</span> {
+                <span class="hljs-attribute">font-family</span>: sans-serif;
+                <span class="hljs-attribute">background-color</span>: yellow;
+            }
+        </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>	
+            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Κεφαλίδα 1<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>	
+            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span> Πρώτη παράγραφος.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>    
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<p><strong>Το αποτέλεσμα</strong></p>
+<img src="first.png" width=150>
+<p>Ένα στοιχείο HTML έχει την εξής δομή:</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">etiketa</span> παράμετρος=<span class="hljs-string">"τιμή"</span>&gt;</span> περιεχόμενο <span class="hljs-tag">&lt;/<span class="hljs-name">etiketa</span>&gt;</span>
+</div></code></pre>
+<p>ένα παράδειγμα:</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"p1"</span>&gt;</span> καλημέρα <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</div></code></pre>
+<h3 id="%CF%84%CF%85%CF%80%CE%B9%CE%BA%CE%AD%CF%82-%CE%B5%CF%84%CE%B9%CE%BA%CE%AD%CF%84%CE%B5%CF%82">Τυπικές ετικέτες</h3>
+<ul>
+<li><code>&lt;html&gt;, &lt;head&gt;, &lt;body&gt;</code> ετικέτες δόμησης του εγγράφου</li>
+<li><code>&lt;meta&gt;</code> μετα-δεδομένα στην κεφαλίδα του εγγράφου</li>
+<li><code>&lt;style&gt;</code> εισαγωγή κανόνων μορφοποίησης (CSS)</li>
+<li><code>&lt;script&gt;</code> εισαγωγή κώδικα JavaScript</li>
+<li><code>&lt;h1&gt;...&lt;/h1&gt;, &lt;h2&gt;, ... &lt;h6&gt;</code> Επικεφαλίδες διαφόρων επιπέδων</li>
+<li><code>&lt;ul&gt; …&lt;/ul&gt;</code> 	Μη διατεταγμένη λίστα</li>
+<li><code>&lt;ol&gt; … &lt;/ol&gt;</code>	Διατεταγμένη λίστα (1.,2.,3. …)</li>
+<li><code>&lt;pre&gt;</code> κείμενο που διατηρεί τη στοίχισή του (pre-frormatted), χρήσιμο για κώδικα.</li>
+<li><code>&lt;p&gt; … &lt;/p&gt;	</code>	Παράγραφος (block element)</li>
+<li><code>&lt;div&gt; …	&lt;/div&gt;</code> Oρισμός μπλοκ, που αρχίζει από νέα γραμμή και αλλαγή γραμμής στο τέλος</li>
+<li><code>&lt;span&gt; … &lt;/span&gt;</code> ορισμός μικρής περιοχής κειμένου  (inline element)</li>
+<li><code>&lt;form&gt;</code> φόρμα εισαγωγής στοιχείων από τον χρήστη</li>
+<li><code>&lt;input&gt;</code> στοιχείο φόρμας</li>
+<li><code>&lt;table&gt;</code> πίνακας</li>
+<li><code>&lt;a&gt;</code> (άγκυρα) υπερσύνδεσμος</li>
+<li><code>&lt;img&gt;</code> εικόνα</li>
+<li><code>&lt;video&gt;</code> βίντεο</li>
+<li><code>&lt;audio&gt;</code> ήχος</li>
+</ul>
+<p>Ένα στοιχείο HTML μπορεί να φέρει μοναδική <strong>ταυτότητα</strong> που ορίζεται με το γνώρισμα <code>id</code> ή να ανήκει σε μια <strong>κλάση</strong>, την οποία μοιράζονται διάφορα στοιχεία, η κλάση ορίζεται με το γνώρισμα <code>class</code>.</p>
+<p>Ένα παράδειγμα ορισμού της ταυτότητας ενός στοιχείου <code>&lt;div&gt;</code>.</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myid"</span>&gt;</span> κείμενο <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</div></code></pre>
+<p>Οι ταυτότητες <code>id</code> και οι κλάσεις <code>class</code> χρησιμοποιούνται για την συσχέτιση των στοιχείων με κανόνες εμφάνισης του στοιχείου CSS.</p>
+<h4 id="%CE%AD%CE%BD%CE%B1-%CF%80%CE%B1%CF%81%CE%AC%CE%B4%CE%B5%CE%B9%CE%B3%CE%BC%CE%B1">Ένα παράδειγμα</h4>
+<p>Έστω ότι θέλουμε να ζητήσουμε από τον χρήστη να διαλέξει μια από τις πιθανές απαντήσεις στο παρακάτω ερώτημα:</p>
+<img width="300" src="quiz.png" style="border:1px solid gray">
+<p>Ο παρακάτω κώδικας HTML υλοποιεί την παραπάνω συμπεριφορά:</p>
+<pre class="hljs"><code><div>    <span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"quiz"</span>&gt;</span>
+        Τι θα τυπώσει το παρακάτω πρόγραμμα;
+        <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>
+    def f():
+        a = 7
+        print(a, end = ' ')
+    a = 5
+    f()
+    print(a, end = ' ')
+        <span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+        Απάντηση (επιλέξτε):
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"answer"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span>&gt;</span> 5 5<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"answer"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"2"</span>&gt;</span> 7 5<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"answer"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"3"</span>&gt;</span> 7 7<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"answer"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"4"</span>&gt;</span> NameError<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"answer"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"5"</span>&gt;</span> δεν γνωρίζω<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Υποβολή<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</div></code></pre>
+<p>(Την πλήρη λύση θα βρείτε στο αρχείο <code>question.html</code>)</p>
+<p>Να σημειωθεί ότι δημιουργήσαμε μια φόρμα <code>&lt;form&gt;</code> μέσα στην οποία τοποθετήσαμε κείμενο και κώδικα (στοιχείο <code>&lt;pre&gt;</code>), καθώς και μια σειρά από στοιχεία <code>&lt;input type=&quot;radio&quot;&gt;</code> με κοινό <code>name</code>, όταν ο χρήστης επιλέξει ένα από αυτά και υποβάλουμε την φόρμα, θα επιστρέψει την αντίστοιχη τιμή <code>value</code>.</p>
+<p>Περισσότερες οδηγίες για τη σύνταξη της HTML μπορείτε να βρείτε στο <a href="https://www.w3schools.com/html/default.asp">w3 HTML Tutorial</a></p>
+<h3 id="%CE%BA%CE%B1%CE%BD%CF%8C%CE%BD%CE%B5%CF%82-css">Κανόνες CSS</h3>
+<p>Ένας κανόνας CSS ορίζει την εμφάνιση των στοιχείων HTML της ιστοσελίδας.</p>
+<p>Για παράδειγμα αν επιθυμούμε τα στοιχεία <code>&lt;h1&gt;</code> και <code>&lt;p&gt;</code> να περιέχουν κείμενο χρώματος <code>blue</code>  με εσωτερικό περιθώριο <code>1em</code> o σχετικός κανόνας CSS θα έχει την εξής μορφή:</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">h1</span>, <span class="hljs-selector-tag">p</span> {
+    <span class="hljs-attribute">color</span>: blue;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1em</span>;
+}
+</div></code></pre>
+<p>Στο παράδειγμα αυτό οι <code>h1, p</code> λέγονται <strong>επιλογείς</strong>, οι <code>color</code>, <code>padding</code> είναι οι <strong>ιδιότητες</strong> και <code>blue</code>, <code>1em</code> είναι αντίστοιχα οι τιμές των ιδιοτήτων αυτών.</p>
+<p>Οι επιλογείς μπορεί να αφορούν κλάσεις (πχ <code>&lt;ετικέτα class=&quot;classname&quot;&gt;</code>) ή τις ιδιότητες στοιχείων πχ <code>&lt;ετικέτα id=&quot;ταυτότητα&quot;&gt;</code></p>
+<p>Για παράδειγμα ο κανόνας</p>
+<pre class="hljs"><code><div><span class="hljs-selector-id">#myid</span> {<span class="hljs-attribute">font-size</span>: <span class="hljs-number">2rem</span>;}
+</div></code></pre>
+<p>ορίζει ότι το μέγεθος χαρακτήρων του στοιχείου με ταυτότητα <code>id=&quot;myid&quot;</code> είναι 2 rem (root em).</p>
+<p>Οι κανονές CSS μπορεί να περιέχονται σε ένα εξωτερικό αρχείο .css ή μέσα στο ίδιο το αρχείο .html μέσα στην ετικέτα <code>&lt;style&gt;</code>.</p>
+<p>Κάθε στοιχείο HTML εμφανίζεται ως ένα ορθογώνιο κουτί.
+Το κουτί αυτό αποτελείται από 4 περιοχές: περιεχόμενο, εσωτερικό περιθώριο (padding), περίγραμμα (border), εξωτ.περιθώριο (margin).
+Στο παράδειγμα (από τα εργαλεία developer του chrome) ένα στοιχείο  έχει διαστάσεις περιεχομένου 750x200px  και εξωτερικό περιθώριο 8px.</p>
+<img src="box.png">
+<p>Περισσότερες οδηγίες για τη σύνταξη κανόνων CSS μπορείτε να βρείτε στο <a href="https://www.w3schools.com/css/default.asp">web3 CSS tutorial</a></p>
+<div style="page-break-after: always;"></div>
+<h2 id="3-%CE%BA%CE%B1%CF%84%CE%B1%CF%83%CE%BA%CE%B5%CF%85%CE%AC%CE%B6%CE%BF%CF%85%CE%BC%CE%B5-%CE%AD%CE%BD%CE%B1%CE%BD-%CE%B5%CE%BE%CF%85%CF%80%CE%B7%CF%81%CE%B5%CF%84%CE%B7%CF%84%CE%AE-%CE%BC%CE%B5-pythonflask">3. Κατασκευάζουμε έναν εξυπηρετητή με Python/Flask</h2>
+<p>Στις προηγούμενες ενότητες είδαμε τις βασικές τεχνολογίες που χρησιμοποιούνται για να δημιουργήσουμε μια ιστοσελίδα HTML/CSS (Δεν αναφερθήκαμε στην τρίτη βασική τεχνολογία που είναι η JavaScript, περισσότερα για αυτή στο <a href="https://www.w3schools.com/js/DEFAULT.asp">web3 JavaScript tutorial</a>).</p>
+<p>Ήρθε η ώρα να δημιουργήσουμε έναν εξυπηρετητή ο οποίος θα ανταποκρίνεται σε αιτήματα και θα αποστέλει προς τον πελάτη ιστοσελίδες όπως αυτή με το quiz του παραδείγματος που είδαμε. Το πρόγραμμα που θα φτιάξουμε δεν θα μάς στέλνει μόνο ερωτήσεις, αλλά θα παίρνει και την απάντησή μας και θα υπολογίζει το σκορ μας.</p>
+<p>Ένας εξυπηρετητής του παγκόσμιου ιστού μπορεί να γραφτεί σε διάφορες γλώσσες προγραμματισμού, εδώ θα δοκιμάσουμε τη γλώσσα Python και τη βιβλιοθήκη <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask</a>.</p>
+<p>Πρέπει αρχικά να εγκαταστήσουμε την Flask και να δημιουργήσουμε ένα απλό πρόγραμμα με βάση και τις οδηγίες που θα βρούμε στο <a href="https://flask.palletsprojects.com/en/1.1.x/installation/">Flask tutorial</a></p>
+<h4 id="%CE%B5%CE%B3%CE%BA%CE%B1%CF%84%CE%AC%CF%83%CF%84%CE%B1%CF%83%CE%B7-%CF%84%CE%B7%CF%82-flask">Εγκατάσταση της Flask</h4>
+<p>Δημιουργούμε τον φάκελο (quiz-server) στον οποίο θα δημιουργήσουμε τον εξυπηρετητή μας <code>server.py</code></p>
+<p>Από το terminal του vs code, αρχικά δημιουργούμε ένα  virtual environment με την εντολή (windows):</p>
+<blockquote>
+<p>$ py -3 -m venv venv</p>
+</blockquote>
+<p>(mac)</p>
+<blockquote>
+<p>$ python3 -m venv venv</p>
+</blockquote>
+<p>Στη συνέχεια ενεργοποιούμε αυτό το virtual environment (εικονικό περιβάλλον) που δημιουργήσαμε</p>
+<p>(windows)</p>
+<blockquote>
+<p>venv\Scripts\activate</p>
+</blockquote>
+<p>(mac)</p>
+<blockquote>
+<p>$ . venv/bin/activate</p>
+</blockquote>
+<p>Η απόκριση είναι:</p>
+<blockquote>
+<p>(venv) nma@nmac quiz-server %</p>
+</blockquote>
+<p>Αυτό είναι ένδειξη ότι έχει ενεργοποιηθεί το virtual environment στο οποίο μέσα θα εγκαταστήσουμε τη Flask.</p>
+<p>Το virtual environment είναι ένας προστατευμένος χώρος της Python που δεν επηρεάζεται από άλλες βιβλιοθήκες που μπορεί να έχουμε εγκαταστήσει στον υπολογιστή μας, ή νεότερες εγκαταστάσεις της γλώσσας ή των εξαρτημάτων.</p>
+<p>Είναι γενικά καλή πρακτική σύνθετες εφαρμογές όπως ο εξυπηρετητής Flask να εγκαθίστανται σε εικονικά περιβάλλοντα.</p>
+<p>Η εγκατάσταση της Flask γίνεται με το εργαλείο <code>pip</code></p>
+<blockquote>
+<p>$ pip install Flask</p>
+</blockquote>
+<p>Η εγκατάσταση της Flask, περιλαμβάνει μια σειρά εξαρτήματα, όπως την Werkzeug που υλοποιεί το πρωτόκολλο WSGI σύνδεσης ενός προγράμματος Python με ένα webserver, την Jinja2 που είναι μια βιβλιοθήκη template για εισαγωγή παραμετρικά περιεχομένου σε μια ιστοσελίδα, την click, που επιτρέπει την επικοινωνία με τη flask από γραμμή εντολών, την MarkupSafe για έλεγχο ασφάλειας στο περιεχόμενο που εισάγουμε στις ιστοσελίδες.</p>
+<p>Στη συνέχεια θα δημιουργήσουμε την πιο απλή εφαρμογή εξυπηρετητή με τη Flask. Θα αντιγράψουμε το παράδειγμα από την <a href="https://flask.palletsprojects.com/en/1.1.x/quickstart/#a-minimal-application">ιστοσελίδα της Flask</a> σε ένα αρχείο <code>server.py</code>:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask
+app = Flask(__name__)
+
+<span class="hljs-meta">@app.route('/')</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hello_world</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'&lt;h1&gt;καλή σας μέρα!&lt;/h1&gt;'</span>
+</div></code></pre>
+<p>Οι δύο πρώτες γραμμές δημιουργούν ένα στιγμιότυπο της εφαρμογής Flask. Η εφαρμογή Flask επικοινωνεί με τον εξυπηρετητή ιστού (web server) με το πρωτόκολλο WSGI, τον στάνταρ τρόπο που έχει ένα πρόγραμμα Python να επικοινωνεί με ένα εξυπηρετητή ιστού.
+Ο δημιουργός του στιγμιότυπου Flask() δέχεται ως παράμετρο το κυρίως πρόγραμμα της εφαρμογής που είναι το όνομα του ίδιου του αρχείου <code>__name__</code>.</p>
+<p>Η κύρια λειτουργία της εφαρμογής είναι η δρομολόγηση αιτημάτων που φτάνουν στον εξυπηρετητή. Τα αιτήματα φτάνουν σε URL, σε διευθύνσεις του ιστού. Η εφαρμογή μας δημιουργεί ένα χάρτη από διευθύνσεις αιτημάτων και του αντίστοιχου κώδικα που θα ανταποκριθεί σε κάθε ένα αίτημα.</p>
+<p>Η πρώτη μας εφαρμογή έχει μόνο ένα τέτοιο σημείο δρομολόγησης. Τα αιτήματα που φτάνουν στη σχετική διεύθυνση &quot;/&quot; τα χειρίζεται η συνάρτηση hello_world(), η οποία όταν κληθεί επιστρέφει μια συμβολοσειρά.</p>
+<p>Αν ο εξυπηρετητής ήταν συνδεδεμένος για παράδειγμα στη διεύθυνση &quot;www.server.com&quot;, κάθε φορά που έφτανε ένα αίτημα στη διεύθυνση αυτή θα το εξυπηρετούσε η αντίστοιχη συνάρτηση.</p>
+<p>Αν είχαμε ένα ακόμη σημείο δρομολόγησης &quot;/login&quot;, αυτό θα αφορούσε αιτήματα που φτάνουν στη διεύθυνση &quot;www.server.com/login&quot;.</p>
+<p>Στο τέλος του προγράμματος προσθέτουμε την εντολή που ενεργοποιεί την εφαρμογή Flask και μάλιστα σε debug κατάσταση:</p>
+<pre class="hljs"><code><div>
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:
+    app.run(debug=<span class="hljs-literal">True</span>)
+</div></code></pre>
+<p>Τώρα είμαστε έτοιμοι να τρέξουμε την εφαρμογή μας και αυτό θα πρέπει να γίνει απο τη γραμμή εντολών (terminal):</p>
+<blockquote>
+<p>python server.py</p>
+</blockquote>
+<p>Η εφαρμογή Flask μάς γνωστοποιεί ότι είναι ενεργή και έτοιμη πλέον να εξυπηρετήσει αιτήματα:</p>
+<pre style="color:grey">
+ * Serving Flask app "server" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 318-838-524
+ </pre>
+<p>Να σημειωθεί ότι μαζί με την Flask έχουμε κατεβάσει ένα web server που τρέχει σε τοπικό επίπεδο.</p>
+<p>Αν πάρουμε μια απάντηση όπως η παραπάνω, αυτό σημαίνει ότι ο εξυπηρετητής είναι διαθέσιμος και μπορούμε να συνδεθούμε σε αυτόν από τον φυλλομετρητή μας πληκτρολογώντας τη διεύθυνση localhost:5000</p>
+<p>localhost είναι το συμβολικό όνομα για τον τοπικό υπολογιστή (127.0.0.1) ενώ η θύρα στην οποία θα πρέπει να συνδεθούμε από τον φυλλομετρητή ορίζεται η 5000.</p>
+<p><em><strong>Σημείωση</strong>: συνήθως η θύρα που εξυπηρετούνται εφαρμογές του παγκόσμιου ιστού είναι η θύρα 80, και η οποία παραλείπεται από τις διευθύνσεις σε συνήθη χρήση, αφού εννοείται, εδώ χρησιμοποιούμε μια άλλη θύρα για να μην διαταράξουμε τη συνήθη χρήση του φυλλομετρητή μας.</em></p>
+<p>Αν όλα πάνε καλά όταν ανοίξουμε τον φυλλομετρητή στη διεύθυνση localhost:5000, θα δούμε το μήνυμα &quot;καλή σας μέρα!&quot; που μάς έστειλε ο εξυπηρετητής.</p>
+<h4 id="%CE%B5%CE%BE%CF%85%CF%80%CE%B7%CF%81%CE%AD%CF%84%CE%B7%CF%83%CE%B7-%CE%B9%CF%83%CF%84%CE%BF%CF%83%CE%B5%CE%BB%CE%AF%CE%B4%CE%B1%CF%82">Εξυπηρέτηση ιστοσελίδας</h4>
+<p>Αν θέλουμε να πάρουμε μια ιστοσελίδα, πχ το αρχείο <code>question.html</code> αντί για απλά το κείμενο της καλημέρας, όπως στο προηγούμενο παράδειγμα, αυτό θα πρέπει να γίνει αλλάζοντας το σημείο δρομολόγησης (route) ώστε να κληθεί η ιστοσελίδα με την μέθοδο <code>render_tamplate()</code> της Flask, ως εξής:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> render_template <span class="hljs-keyword">from</span> Flask
+...
+<span class="hljs-meta">@app.route('/')</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">quiz</span><span class="hljs-params">()</span>:</span>
+        <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">'question.html'</span>)
+</div></code></pre>
+<p>Αυτό προϋποθέτει ότι έχουμε δημιουργήσει ένα φάκελο <code>templates</code> και εκεί  έχουμε αποθηκεύσει το αρχείο <code>question.html</code>.</p>
+<p>Όταν τώρα στον φυλλομετρητή δώσουμε τη διεύθυνση <code>localhost:5000</code> θα δούμε τη γνωστή φόρμα του τεστ, που είχαμε δει σε προηγούμενη ενότητα, όμως τώρα μάς την έστειλε η εφαρμογή Flask.</p>
+<h4 id="%CF%80%CE%B1%CF%81%CE%B1%CE%BC%CE%B5%CF%84%CF%81%CE%B9%CE%BA%CE%AC-%CF%83%CE%B7%CE%BC%CE%B5%CE%AF%CE%B1-%CE%B4%CF%81%CE%BF%CE%BC%CE%BF%CE%BB%CF%8C%CE%B3%CE%B7%CF%83%CE%B7%CF%82">Παραμετρικά σημεία δρομολόγησης</h4>
+<p>Επίσης είναι δυνατόν να έχουμε παραμετρικά σημεία δρομολόγησης, όπως στο παράδειγμα:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">@app.route('/user/&lt;name&gt;')</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">user</span><span class="hljs-params">(name)</span>:</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"Καλή σου μέρα {}!"</span>.format(name)
+</div></code></pre>
+<p>Στην περίπτωση αυτή ανάλογα με την τιμή του URL έχουμε διαφορετικό μήνυμα στον χρήστη.</p>
+<p>Όταν φορτώσουμε τη σελίδα <code>localhost:500/user/Niko</code> θα πάρουμε στον φυλλομετρητή μας το μήνυμα</p>
+<blockquote>
+<p>Καλή σου μέρα Niko!</p>
+</blockquote>
+<p>Αυτή η δυνατότητα είναι ιδιαίτερα χρήσιμη για να μεταφέρουμε πληροφορία στον εξυπηρετητή από τον πελάτη, μέσω του URL.</p>
+<div style="page-break-after: always;"></div>
+<h2 id="4-%CE%B7-%CE%BC%CE%B7%CF%87%CE%B1%CE%BD%CE%AE-template-jinja2">4. Η μηχανή template Jinja2</h2>
+<p>Το αρχείο <code>question.html</code> που στείλαμε στο προηγούμενο παράδειγμα ήταν απλά ένα στατικό ήδη έτοιμο αρχείο, γραμμένο στη γλώσσα HTML/CSS.</p>
+<p>θα ήταν καλό όμως να μπορούσουμε να αλλάζαμε το περιεχόμενό του, ώστε με το ίδιο αρχείο να στέλνουμε διαφορετικές ερωτήσεις του τεστ.</p>
+<p>Αυτό μπορεί να γίνει με χρήση της μηχανής template <strong>Jinja2</strong> που περιλαμβάνεται στο Flask.</p>
+<p>Αν υποθέσουμε ότι επιθυμούμε να εισάγουμε το όνομα του χρήστη (μεταβλητή <code>name</code> στο αρχείο, αυτό γίνεται εισάγοντας τη σχετική μεταβλητή στο αρχείο html ως ακολούθως:</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Python-Quiz - Χρήστης: {{user_name }}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+</div></code></pre>
+<p>και καλώντας τη μέθοδο σχεδίασης της σελίδας, ως εξής:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">return</span> render_template(<span class="hljs-string">'question.html'</span>, user_name=name)
+</div></code></pre>
+<p>Δηλαδή έχουμε ορίσει μια μεταβλητή Jinja2, την <code>user_name</code>, στην οποία όταν καλούμε το template περνάμε μια τιμή, αυτή της μεταβλητής <code>name</code> της Python. Μέσα στο template εισάγουμε την μεταβλητή μέσα σε διπλά άγκιστρα:</p>
+<pre class="hljs"><code><div>{{ user_name }}
+</div></code></pre>
+<p>Η μηχανή Jinja2 κατά την κλήση της render_template() μεταφέρει την τιμή στη θέση αυτή και αποστέλει στον χρήστη τη σελίδα με το νέο περιεχόμενο.</p>
+<p>Σε μια μεταβλητή Jinja2 μπορούμε να εφαρμόσουμε φίλτρα, ως εξής: <code>{{ variable | filter }}</code></p>
+<p>Μερικά τέτοια φίλτρα είναι: <code>lower</code> (μικρά γράμματα), <code>upper</code> (κεφαλαία), <code>safe</code> (εκτέλεση του κώδικα HTML). Το τελευταίο φίλτο είναι ιδιαίτερα χρήσιμο για την ενσωμάτωση κώδικα html ο οποίος θα θέλαμε να εκτελεστεί, ώστε για παράδειγμα να μπορούμε να ενσωματώσουμε τον κώδικα python σε ετικέτες <code>&lt;pre&gt;, &lt;/pre&gt;</code> με συνέπεια o κώδικας να εμφανιστεί με στοίχιση, ώστε να είναι κατανοητός.</p>
+<p>Επίσης υπάρχουν άλλες δομές στην Jinja2, όπως η δομή επανάληψης for για επαναληπτική παρουσίαση δεδομένων ενός πίνακα. Αν έχουμε ένα πίνακα <code>replies</code>, μπορούμε να παρουσιάσουμε τα στοιχεία του ως λίστα ως εξής:</p>
+<pre class="hljs"><code><div>&lt;ol&gt;
+{% for reply in replies %}
+    &lt;li&gt;{{ reply }}&lt;/li&gt;
+{% endfor %}
+&lt;/ol&gt;
+</div></code></pre>
+<p>Με αυτόν τον τρόπο θα παρουσιάσουμε τις απαντήσεις σε ένα ερώτημα πολλαπλής επιλογής, όπως θα δούμε σε μια επόμενη ενότητα.</p>
+<p>Μια άλλη χρήσιμη δομή είναι η δομή υπό-συνθήκη εκτέλεσης ενός κώδικα (συνθήκη  if), ακολουθεί ένα παράδειγμα.</p>
+<pre class="hljs"><code><div>{% if user %}
+    Γειά σου, {{ user }}!
+{% else %}
+    Καλημέρα σας!
+{% endif %}
+</div></code></pre>
+<h4 id="%CE%BA%CE%BB%CE%B7%CF%81%CE%BF%CE%BD%CE%BF%CE%BC%CE%B9%CE%BA%CF%8C%CF%84%CE%B7%CF%84%CE%B1-jinja2-templates">Κληρονομικότητα Jinja2 templates</h4>
+<p>H μηχανή template Jinja2 επιτρέπει την κληρονομικότητα μεταξύ templates. Αυτή η ιδιότητα είναι ιδιαίτερα χρήσιμη αν θέλουμε κάποια στοιχεία να τα επαναλάβουμε σε όλες τις ιστοσελίδες, χωρίς να αντιγράψουμε τον ίδιο κώδικα σε πολλά αρχεία, κάτι που μπορεί να είναι πηγή σφαλμάτων, αν για παράδειγμα θέλουμε να κάνουμε αλλαγές.</p>
+<p>Ο μηχανισμός κληρονομικότητας εξηγείται στη συνέχεια με ένα παράδειγμα. Έστω ότι έχουμε ένα βασικό αρχείο, το οποίο ονομάζουμε <code>base.html</code> και στο οποίο ενσωματώνουμε τα κοινά στοιχεία όλων των ιστοσελίδων, πχ το τμήμα <code>&lt;head&gt;</code>, ενώ το τμήμα <code>&lt;body&gt;</code> αλλάζει σε διαφορετικές ιστοσελίδες.</p>
+<pre class="hljs"><code><div>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt; {% block title %}{% endblock title %} &lt;/title&gt;
+    &lt;style&gt;
+        ....
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    {% block body %} 
+    {% endblock body %}
+&lt;/body&gt;
+&lt;/html&gt;
+</div></code></pre>
+<p>Το αρχείο αυτό σε δύο σημεία έχει μπλοκ κώδικα που είναι παραμετρικός, στον <em>τίτλο</em> και στο <em>σώμα</em> του αρχείου html.</p>
+<p>Όλα τα υπόλοιπα στοιχεία πρόκειται να κληρονομηθούν σε όλες τις ιστοσελίδες που θα περιλάβουν το <code>base.html</code>.</p>
+<p>Να ένα παράδειγμα μιας σελίδας login που κληρονομεί το αρχείο <code>base.html</code>.</p>
+<pre class="hljs"><code><div>{% extends &quot;base.html&quot; %}
+{% block title %} Login {% endblock title %} 
+{% block body %}
+    &lt;h1&gt; Καλωσήρθατε στο Python-Quiz&lt;/h1&gt;
+    &lt;form &gt;
+        &lt;input type=&quot;text&quot; name=&quot;name&quot; placeholder=&quot;το όνομά σας...&quot;&gt;
+        &lt;button&gt;Ξεκινήστε&lt;/button&gt;
+    &lt;/form&gt;
+{% endblock body %}
+</div></code></pre>
+<div style="page-break-after: always;"></div>
+<h2 id="5-%CF%80%CE%B1%CF%81%CE%AC%CE%B4%CE%B5%CE%B9%CE%B3%CE%BC%CE%B1-%CE%BC%CE%B5%CF%84%CE%B1%CF%86%CE%AD%CF%81%CE%BF%CF%85%CE%BC%CE%B5-%CF%84%CE%B7%CE%BD-%CE%B5%CF%86%CE%B1%CF%81%CE%BC%CE%BF%CE%B3%CE%AE-pythonquiz-%CF%83%CF%84%CE%BF-%CE%B4%CE%B9%CE%B1%CE%B4%CE%AF%CE%BA%CF%84%CF%85%CE%BF">5. Παράδειγμα: μεταφέρουμε την εφαρμογή <code>pythonquiz</code> στο διαδίκτυο</h2>
+<p>Έχουμε δημιουργήσει μια εφαρμογή python για αυτο-αξιολόγηση γνώσεων μέσω ερωτήσεων πολλαπλής επιλογής. Η εφαρμογή αρχικά λειτουργεί από γραμμή εντολών (πχ από το IDLE).</p>
+<h4 id="%CE%B7-%CE%B5%CF%86%CE%B1%CF%81%CE%BC%CE%BF%CE%B3%CE%AE-python">Η εφαρμογή python</h4>
+<p>Όταν ξεκινήσει η εφαρμογή ρωτάει τον χρήστη το όνομά του, τον αναζητάει στη βάση δεδομένων και αν τον βρει του λέει το σκορ που είχε πετύχει σε προηγούμενες προσπάθειες, και στη συνέχεια του κάνει 5 τυχαίες ερωτήσεις από μια βάση δεδομένων ερωτήσεων.</p>
+<p>'Ενα παράδειγμα χρήσης της εφαρμογής είναι:</p>
+<pre class="hljs"><code><div>Δώσε το όνομά σου:kostas
+Παίκτης: kostas
+Προηγούμενες προσπάθειες:
+28-03-21 Sun 17:39:47	score: 100.0%
+
+Ερώτηση 1 από 5
+Ερώτηση [Q51]
+Ποιο από τα παρακάτω στοιχεία δεν μπορεί να είναι κλειδί ενός λεξικού:
+Απαντήσεις:
+1	(1,2)
+2	[1,2]
+3	(2,)
+4	2
+5	2.0
+6	'2'
+7.	Δεν γνωρίζω
+H απάντησή σας (x για έξοδο):3
+λάθος απάντηση, η σωστή απάντηση είναι η 2
+To score είναι -0.2
+</div></code></pre>
+<p>Αν η απάντηση του χρήστη είναι σωστή, αυτός παίρνει 1 μονάδα, αν είναι εσφαλμένη βαθμολογείται με αρνητική βαθμολογία -1/(ν-1), όπου ν το πλήθος των απαντήσεων, και βαθμολογείται με 0 αν επιλέξει την τελευταία απάντηση που είναι πάντα &quot;Δεν γνωρίζω&quot;.</p>
+<p>Ο σκελετός της αρχιτεκτονικής της εφαρμογής φαίνεται στη συνέχεια.</p>
+<pre class="hljs"><code><div>
+<span class="hljs-keyword">import</span> re
+<span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> random
+<span class="hljs-keyword">import</span> datetime
+
+total_questions = <span class="hljs-number">5</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Quiz</span>:</span>
+    allQuiz = {}
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, id, question, replies, correct)</span>:</span>
+        ...
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">calculate_score</span><span class="hljs-params">(self, reply)</span>:</span>
+        ...
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__str__</span><span class="hljs-params">(self)</span>:</span>
+        ...
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Player</span>:</span>
+    players = {}
+<span class="hljs-meta">    @staticmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">load_players</span><span class="hljs-params">()</span>:</span>
+        ...
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name, update=True)</span>:</span>
+        ...
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">new_game</span><span class="hljs-params">(self, score, update=True)</span>:</span>
+        ...
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update_players</span><span class="hljs-params">(self)</span>:</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__str__</span><span class="hljs-params">(self)</span>:</span>
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">load_quiz</span><span class="hljs-params">()</span>:</span>
+    ...
+    <span class="hljs-comment">## load players</span>
+    Player.load_players()
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">play_quiz</span><span class="hljs-params">()</span>:</span>
+    ...
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:
+    load_quiz()
+    play_quiz()
+
+</div></code></pre>
+<p>Η εφαρμογή συνδέεται με μια βάση δεδομένων, που για απλότητα έχει υλοποιηθεί ως δύο αρχεία κειμένου τα οποία περιέχουν το ένα (<code>questions.txt</code>) τις ερωτήσεις του τεστ, και το άλλο (<code>players.txt</code>) τα ιστορικά στοιχεία προηγούμενων προσπαθειών των παικτών.</p>
+<p>Ξεκινάει με φόρτωμα των ερωτήσενω του quiz και των παικτών (συνάρτηση <code>load_quiz()</code>). Στη συνέχεια καλείται η συνάρτηση <code>play_game()</code>, η οποία είναι ο βασικός ελεγκτής της ροής του παιχνιδιού, κάνει επιλογή τυχαίων ερωτήσεων και εμφανίζει τις ερωτήσεις, δέχεται την απάντηση του χρήστη, και υπολογίζει το σκορ.</p>
+<p>Μπορείτε να πειραματιστείτε με την <a href="pythonquiz.zip">εφαρμογή αυτή</a>.</p>
+<p>Το ζητούμενο είναι να μεταφέρουμε την εφαρμογή στο διαδίκτυο. Δηλαδή ο χρήστης να επικοινωνεί με την εφαρμογή μέσω του φυλλομετρητή.</p>
+<h4 id="%CE%B4%CE%B7%CE%BC%CE%B9%CE%BF%CF%85%CF%81%CE%B3%CE%AF%CE%B1-%CE%B4%CE%B9%CE%B5%CF%80%CE%B1%CF%86%CE%AE%CF%82-%CE%BC%CE%B5-%CF%84%CE%B7%CE%BD-%CE%B5%CF%86%CE%B1%CF%81%CE%BC%CE%BF%CE%B3%CE%AE">Δημιουργία διεπαφής με την εφαρμογή</h4>
+<p>Κατ' αρχάς δημιουργούμε στο αρχείο <code>pythonquiz.py</code> συναρτήσεις διεπαφής με τη βάση δεδομένων, αυτές θα μπορέσουμε να τις καλέσουμε αν εισάγουμε το αρχείο στην εφαρμογή Flask με την εντολή: <code>import pythonquiz as quiz</code>.</p>
+<p>Οι χρήσιμες συναρτήσεις της διεπαφής είναι οι εξής:</p>
+<pre class="hljs"><code><div>
+quiz.load_quiz()
+<span class="hljs-comment"># φορτώνει τα δεδομένα των ερωτήσεων για να </span>
+<span class="hljs-comment"># τα έχει διαθέσιμα στην εφαρμογή, καλείται</span>
+<span class="hljs-comment"># στην αρχή.</span>
+
+quiz.draw_questions()
+<span class="hljs-comment"># επιστρέφει array με κωδικούς 5 τυχαίων ερωτήσεων</span>
+
+quiz.show_question(id)
+<span class="hljs-comment"># για συγκεκριμένο κωδικό ερώτησης id </span>
+<span class="hljs-comment"># επιστρέφει dictionary με τα εξής στοιχεία:</span>
+<span class="hljs-comment"># {id": "", "question": "", "replies": </span>
+<span class="hljs-comment"># {1: "", 2:"", ...}, "correct": int }</span>
+
+quiz.question_score(id, reply):
+<span class="hljs-comment"># υπολογίζει το σκορ για συγκεκριμένη επιλογή του χρήστη</span>
+
+quiz.player_history(name):
+<span class="hljs-comment"># επιστρέφει το σκορ από προηγούμενες </span>
+<span class="hljs-comment"># προσπάθειες του χρήστη `name`</span>
+
+quiz.save_game(name, score):
+<span class="hljs-comment"># αποθηκεύει το score και το datetime της προσπάθειας</span>
+</div></code></pre>
+<p>Αυτή θα είναι η διεπαφή με την οποία θα επικοινωνεί η εφαρμογή Flask με τη βάση δεδομένων των ερωτήσεων και των παικτών.</p>
+<p>Θα πρέπει βεβαίως να σημειώσουμε ότι η υλοποιήση αυτή έχει γίνει για λόγους απλότητας. Σε μια πιο συνηθισμένη εκδοχή, τα δεδομένα θα είναι αποθηκευμένα σε μια βάση δεδομένων, και οι παραπάνω συναρτήσεις θα έκαναν πράξεις στη βάση (πχ με εντολές SQL).</p>
+<h4 id="%CE%BC%CE%B5%CF%84%CE%B1%CF%84%CF%81%CE%BF%CF%80%CE%AE-%CF%84%CE%BF%CF%85-template-questionhtml">Μετατροπή του template <code>question.html</code></h4>
+<p>Στη συνέχεια θα πρέπει να φροντίσουμε να εισάγουμε παραμετρικά στο αρχείο <code>question.html</code> τα στοιχεία μιας τυχαίας ερώτησης, για τον σκοπό αυτό χρησιμοποιούμε τη μηχανή template Jinja2.</p>
+<p>Μέσω των μεταβλητών, user_name, id, question και replies, περνάμε στο αρχείο παραμετρικά τα στοιχεία της ερώτησης, ως εξής:</p>
+<pre class="hljs"><code><div>&lt;body&gt;
+    &lt;h1&gt;Python-Quiz - Χρήστης: {{ user_name }}&lt;/h1&gt;
+    &lt;h2&gt;Ερώτηση αριθμ. {{ id }} &lt;/h2&gt;
+    &lt;form&gt;
+        &lt;div id=&quot;quiz&quot;&gt;
+        {{ question | safe }}
+        &lt;/div&gt;
+        Απάντηση (επιλέξτε):
+        &lt;ol&gt;
+        {% for no,reply in replies.items() %}  
+            &lt;li&gt;&lt;input type=&quot;radio&quot; name=&quot;answer&quot; value={{ no }}&gt; {{ reply }}&lt;/li&gt;
+        {% endfor %}
+        &lt;/ol&gt;
+        &lt;button&gt;Υποβολή&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+</div></code></pre>
+<p>Το αρχείο αυτό καλείται από την αντίστοιχη συνάρτηση δρομολόγησης ως εξής:</p>
+<pre class="hljs"><code><div>q = quiz.show_question(id)
+<span class="hljs-keyword">return</span> render_template(<span class="hljs-string">'question.html'</span>, question = q[<span class="hljs-string">"question"</span>], \
+    id = id, user_name=name, replies = q[<span class="hljs-string">"replies"</span>])
+</div></code></pre>
+<p>Αυτή είναι η πρώτη μας προσπάθεια παραμετρικής χρήσης του αρχείου <code>question.html</code> και η μετατροπή του σε template Jinja2.</p>
+<p>Στη συνέχεια θα επεκτείνουμε τη σχεδίαση με δημιουργία νέων templates για το login, παρουσίαση ιστορικού, παρουσίαση τελικού σκορ καθώς επίσης και μια οθόνη παροχής ανάδρασης στον χρήστη.</p>
+<h4 id="%CF%83%CF%87%CE%B5%CE%B4%CE%AF%CE%B1%CF%83%CE%B7-%CF%84%CE%B7%CF%82-%CE%B5%CF%86%CE%B1%CF%81%CE%BC%CE%BF%CE%B3%CE%AE%CF%82-%CE%B4%CF%81%CE%BF%CE%BC%CE%BF%CE%BB%CF%8C%CE%B3%CE%B7%CF%83%CE%B7%CF%82">Σχεδίαση της εφαρμογής δρομολόγησης</h4>
+<p>Στη συνέχεια σχεδιάζουμε τον χάρτη της εφαρμογής μας.</p>
+<p>Αυτός θα έχει τη μορφή που φαίνεται στο σχήμα:</p>
+<img src="quiz-server.png">
+<p>Θα πρέπει να σχεδιάσουμε με βάση αυτή την προδιαγραφή 4 ιστοσελίδες, οι 3 είναι σχετικά απλές:</p>
+<ul>
+<li><code>login.html</code> εισαγωγή ονόματος χρήστη</li>
+<li><code>start.html</code> εμφάνιση ιστορικού χρήστη και εκκίνηση εφαρμογής</li>
+<li><code>end.html</code> τελικό σκορ και χάρτης, πλήκτρο επανεκκίνησης</li>
+</ul>
+<p>Η 4η ιστοσελίδα όμως, η <code>question.html</code> είναι αρκετά πιο σύνθετη, αφού χρησιμεύει για δύο λειτουργίες:</p>
+<ol>
+<li>παρουσίαση της ερώτησης και επιλογή απάντησης από τον χρήστη (όπως είδαμε στην προηγούμενη ενότητα),</li>
+<li>Παροχή ανάδρασης και συνέχεια στην επόμενη ερώτηση.</li>
+</ol>
+<p>Για να μπορέσουμε να πετύχουμε και τις δύο λειτουργίες έχουμε εισάγει νέες μεταβλητές μέσω του template της Ninja2, οι οποίες ανάλογα με την τιμή τους ενεργοποιούν και εμφανίζουν διαφορετικά στοιχεία. Για παράδειγμα η μεταβλητή <code>feedback</code> περιέχει το κείμενο ανάδρασης, και η μεταβλητή <code>next_question</code> τον κωδικό της επόμενης ερώτησης, που θα κληθεί όταν ο χρήστης πάρει την ανάδραση και πατήσει το πλήκτρο &quot;Επόμενη&quot;.</p>
+<p>Μάλιστα στο αρχείο <code>question.html</code> έχει ορισθεί υπό συνθήκη ο προορισμός υποβολής της φόρμας ως εξής:</p>
+<pre class="hljs"><code><div>{% if disabled %}
+    &lt;form action=/q/{{next_question}}&gt;
+{% else %}
+    &lt;form action=/q/{{id}}&gt;
+{% endif %}
+</div></code></pre>
+<p>Η δομή αυτή συνθήκης της Jinja2 χρησιμοποιείται εδώ για να κατευθύνει την υποβολή της φόρμας είτε στο URL που ορίζει η id, δηλαδή για υποβολή απάντησης, ή στο URL που ορίζει η next_question, δηλαδή για αίτημα για επόμενη ερώτηση.</p>
+<p>Με βάση τα παραπάνω καταλήγουμε στα εξής σημεία δρομολόγησης και τα αντίστοιχα URL, που φαίνονται στη συνέχεια:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">@app.route("/login")</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">login</span><span class="hljs-params">()</span>:</span>
+
+<span class="hljs-meta">@app.route("/start")</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">start</span><span class="hljs-params">()</span>:</span>
+
+<span class="hljs-meta">@app.route("/end")</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">end</span><span class="hljs-params">()</span>:</span>
+
+<span class="hljs-meta">@app.route('/q/&lt;id&gt;')</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">question</span><span class="hljs-params">(id)</span>:</span>
+</div></code></pre>
+<p>Το πιο ενδιαφέρον από αυτά είναι το τελευταίο το οποίο είναι παραμετρικό URL, όπου <id> είναι ο κωδικός της ερώτησης.</p>
+<p>Για παράδειγμα η ερώτηση &quot;Q45&quot; εμφανίζεται στο URL <code>localhost:5000/Q45</code>, όπως φαίνεται στη συνέχεια:</p>
+<img width="250" src="quiz-question.png">
+<h4 id="%CE%B4%CE%B9%CE%B1%CF%87%CE%B5%CE%AF%CF%81%CE%B9%CF%83%CE%B7-%CF%83%CF%85%CE%BD%CE%B5%CE%B4%CF%81%CE%AF%CE%B1%CF%82">Διαχείριση συνεδρίας</h4>
+<p>Ένα πρόβλημα που έχουμε στο διαδίκτυο, είναι η διατήρηση των δεδομένων της κατάστασης σε διαδοχικές κλήσεις σε ένα εξυπηρετητή από τον ίδιο χρήστη. Το πρωτόκολλο HTTP είναι stateless (δεν διατηρεί την κατάστση).</p>
+<p>Στο παράδειγμα αυτό η διατήρηση της κατάστασης γίνεται με χρήση του  <code>session</code>, δηλαδή μικρού αρχείου κρυπτογραφημένων δεδομένων που στέλνονται στον φυλλλομετρητή και επανέρχονται στον εξυπηρετητή, ώστε να ελεγχθεί ότι ο χρήστης είναι ο ίδιος στην επόμενη κλήση, και εν γένει να συντηρείται η <em>κατάσταση</em>, μεταξύ κλήσεων.</p>
+<p>Αρχικά ορίζουμε ένα κλειδί κρυπτογράφησης:</p>
+<pre class="hljs"><code><div>app.config[<span class="hljs-string">'SECRET_KEY'</span>] = <span class="hljs-string">'hard-to-guess-string'</span>
+</div></code></pre>
+<p>Είναι φανερό ότι το κλειδί για να έχει αξία, θα πρέπει να φυλάσσεται σε ξεχωριστό αρχείο και να μην συνοδεύει τον κώδικα της εφαρμογής μας, η οποία μπορεί να είναι διαθέσιμη σε δημόσια αποθετήρια, όπως το github.</p>
+<p>Στη συνέχεια για να γράψουμε δεδομένα στο session το κάνουμε ως εξής:</p>
+<pre class="hljs"><code><div>session[<span class="hljs-string">"user_name"</span>] = name
+</div></code></pre>
+<p>Ενώ αν θέλουμε να ανακτήσουμε τα δεδομένα αυτό γίνεται με την εξής εντολή:</p>
+<pre class="hljs"><code><div>name = session.get(<span class="hljs-string">"user_name"</span>, <span class="hljs-literal">None</span>)
+</div></code></pre>
+<p>Θα πρέπει επίσης να σημειώσουμε ότι τα δεδομένα session είναι διαθέσιμα και στα template Jinja2.</p>
+<div style="page-break-after: always;"></div>
+<h2 id="6-%CF%86%CE%B9%CE%BB%CE%BF%CE%BE%CE%B5%CE%BD%CE%AF%CE%B1-%CF%84%CE%B7%CF%82-%CE%B5%CF%86%CE%B1%CF%81%CE%BC%CE%BF%CE%B3%CE%AE%CF%82-flask">6. Φιλοξενία της εφαρμογής Flask</h2>
+<p>Φιλοξενία της εφαρμογής Flask σε δημόσια διεύθυνση μέσω της υπηρεσίας <a href="https://www.heroku.com/">Heroku</a></p>
+<p>Το Heroku είναι μια πλατφόρμα ως υπηρεσία (Platform as a Service, PaaS) που επιτρέπει στους προγραμματιστές να δημιουργούν, να εκτελούν και να χρησιμοποιούν εφαρμογές πλήρως στο cloud.
+Μια εφαρμογή Heroku εκτελείται σε ένα dyno (ένα Linux box). Η Heroku χρησιμοποιεί υπολογιστικές υπηρεσίες της AWS (Amazon Web Services), ενώ υποστηρίζει εφαρμογές γραμμένες σε διάφορες γλώσσες προγραμματισμού, Node.js, Python, Java, PHP, Go κ.λπ.</p>
+<p>Ο λογαριασμός Heroku για την δωρεάν έκδοση που θα χρησιμοποιήσουμε πέφτει σε αναστολή λειτουργίας μετά από 30 λεπτά αδράνειας, για αυτό η σύνδεση στην εφαρμογή έχει κάποια μικρή καθυστέρηση, μέχρι την επανεκκίνηση του  dyno. Ένας επαληθευμένος λογαριασμός συνοδεύεται από 1000 dyno-hour (CPU) ανά μήνα.</p>
+<p>Το Heroku μάς επιτρέπει να δημιουργήσουμε προσαρμοσμένες διευθύνσεις διαδικτύου, αν για παράδειγμα έχουμε μια εφαρμογή με όνομα <code>mypythonquiz</code>, και την εγκαταστήσουμε στην πλατφόρμα αυτή, θα μπορούμε να την εκτελέσουμε από το URL
+https://mypythonquiz.herokuapp.com .</p>
+<h4 id="%CE%B2%CE%AE%CE%BC%CE%B1%CF%84%CE%B1-%CE%B5%CE%B3%CE%BA%CE%B1%CF%84%CE%AC%CF%83%CF%84%CE%B1%CF%83%CE%B7%CF%82-%CF%84%CE%B7%CF%82-%CE%B5%CF%86%CE%B1%CF%81%CE%BC%CE%BF%CE%B3%CE%AE%CF%82">Βήματα εγκατάστασης της εφαρμογής</h4>
+<p><strong>Βήμα1: Εγκαθιστούμε τη βιβλιοθήκη gunicorn</strong></p>
+<blockquote>
+<p>pip install gunicorn</p>
+</blockquote>
+<p>Η βιβλιοθήκη <strong>Gunicorn</strong> είναι ένας εξυπηρετητής HTTP γραμμένος σε Python για εφαρμογές WSGI. Το πλεονέκτημα του εξυπηρετητή αυτού είναι ότι επιτρέπει να εκτελούμε εφαρμογές Python ταυτόχρονα εκτελώντας πολλές διεργασίες Python σε ένα μόνο dynamo.</p>
+<p><strong>Βήμα 2: Δημιουργία αρχείου requirements.txt</strong></p>
+<p>Στη συνέχεια δημιουργούμε ένα αρχείο <code>requirements.txt</code> το οποίο είναι χρήσιμο για το νέο περιβάλλον, αφού σε αυτό περιγράφονται όλες οι βιβλιοθήκες από τις οποίες εξαρτάται η εφαρμογή μας.</p>
+<blockquote>
+<p>$ pip freeze &gt; requirements.txt</p>
+</blockquote>
+<p>Στο δικό μας παράδειγμα το αρχείο αυτό έχει το εξής περιεχόμενο:</p>
+<pre style="border: 1px solid grey; max-width: 200px">
+click==7.1.2
+Flask==1.1.2
+gunicorn==20.1.0
+itsdangerous==1.1.0
+Jinja2==2.11.3
+MarkupSafe==1.1.1
+Werkzeug==1.0.1
+</pre>
+<p><strong>Βήμα 3: Δημιουργία αρχείου Procfile</strong></p>
+<p>Το αρχείο <strong>Procfile</strong> είναι ένα αρχείο από το οποίο το dyno θα αναζητήσει τις εντολές για να ξεκινήσει την εφαρμογή μας.</p>
+<p>Στη δική μας περίπτωση που η εφαρμογή μας ονομάζεται mypythonquiz και το αρχείο του server είναι το αρχείο <code>server.py</code>, στο Procfile εισάγουμε την εξής εντολή:</p>
+<blockquote>
+<p>web: gunicorn server:app</p>
+</blockquote>
+<p><strong>Βήμα 4: Δημιουργία λογαριασμού Heroku</strong></p>
+<ul>
+<li>
+<p>Για την εγκατάσταση της εφαρμογής μας, αρχικά δημιουργούμε ένα λογαριασμό <a href="https://www.heroku.com/">Heroku</a>.</p>
+</li>
+<li>
+<p>Στη συνέχεια πραγματοποιούμε λήψη και εγκατάσταση του Heroku CLI.</p>
+</li>
+<li>
+<p>Συνδεόμαστε στον λογαριασμό μας Heroku και ακολουθούμε τις οδηγίες για να δημιουργήσουμε ένα νέο δημόσιο κλειδί SSH και στη συνέχεια να ανεβάσουμε μέσω git την εφαρμογή.</p>
+<blockquote>
+<p>$ heroku login
+$ heroku git:clone -a mypythonquiz
+$ git add .
+$ git commit -am &quot;έκδοση 1.0&quot;
+$ git push heroku master</p>
+</blockquote>
+</li>
+</ul>
+<p>Παρατηρούμε ότι εγκαθίστανται στο dyno  η python και οι διάφορες εξαρτήσεις που έχουμε ορίσει στο αρχείο <code>requirements.txt</code></p>
+<p>Τελικά αν ολοκληρωθεί η εγκατάσταση θα πάρουμε ένα μήνυμα</p>
+<blockquote>
+<p>remote:        https://mypythonquiz.herokuapp.com/ deployed to Heroku</p>
+</blockquote>
+<p>Είμαστε έτοιμοι να συνδεθούμε και να χρησιμοποιήσουμε την εφαρμογή μας από το διαδίκτυο.</p>
+<div style="page-break-after: always;"></div>
+<h2 id="7-%CE%B5%CF%80%CE%B5%CE%BA%CF%84%CE%AC%CF%83%CE%B5%CE%B9%CF%82">7. Επεκτάσεις</h2>
+<p>Οι τεχνολογίες που συζητήθηκαν σε αυτή την ενότητα δεν είναι δυνατόν να αναπτυχθούν και να γίνουν κατανοητές σε βάθος στον περιορισμένο χρόνο μιας διάλεξης, είναι αναπόφευκτο ότι κάνουμε μια σύντομη εποπτική παρουσίαση ενός όμως πολύ σημαντικό πεδίου της τεχνολογίας.</p>
+<p>Ο στόχος της συγκεκριμένης διάλεξης είναι να μάς δείξει μέσα από ένα παράδειγμα μιας σχετικά απλής εφαρμογής τις δυνατότητες που έχουμε να χρησιμοποιήσουμε το διαδίκτυο για να διαθέσουμε την εφαρμογή μας σε ένα ευρύτερο κοινό, και να σχεδιάσουμε πιο εύχρηστη αλληλεπίδραση του χρήστη με αυτή.</p>
+<p>Αν κάποιοι έχουν ιδιαίτερο ενδιαφέρον για την περιοχή αυτή, μπορείτε να καταφύγετε σε δύο διαδικτυακά μαθήματα που έχουμε αναπτύξει στην πλατφόρμα http://mathesis.cup.gr</p>
+<ul>
+<li>Εισαγωγή στην ανάπτυξη ιστοσελίδων με HTTP/CSS/JavaScript</li>
+<li>Προχωρημένα θέματα ανάπτυξης ιστοσελίδων</li>
+</ul>
+<p>Αν κάποιοι θα ήθελαν να προχωρήσουν παραπέρα, θα μπορούσαν να παράγουν βελτιωμένες εκδόσεις της εφαρμογής pythonquiz που αναπτύξαμε στο παράδειγμα, μια πιθανή κατεύθυνση είναι η <strong>αυθεντικοποίηση του χρήστη</strong>, υπάρχουν σχετικές βιβλιοθήκες, όπως η <code>Flask-login</code>, που μάς βοηθούν σε αυτή την κατεύθυνση.</p>
+<p>Μια άλλη κατεύθυνση είναι να συνδέσουμε την εφαρμογή με μια <strong>βάση δεδομένων</strong>. Εδώ μπορείτε να χρησιμοποιήσετε το Βιβλίο <a href="https://www.cup.gr/book/isagong-stous-ypologistes-me-ti-glossa-python/">Python Εισαγωγή στους Υπολογιστές</a>, στο κεφάλαιο 15 &quot;Μόνιμη αποθήκευση δεδομένων&quot;, όπου υπάρχει μια εισαγωγή στην SQLite3  καθώς και στην MongoDB, και πώς μπορείτε να συνδέσετε μια εφαρμογή Python με αυτές.</p>
+<p>Επίσης στο Τμήμα ΗΜΤΥ, στο 5ο έτος, διδάσκεται ένα μάθημα με αντικείμενο ακριβώς αυτές τις τεχνολογίες <em>&quot;Προγραμματισμός Διαδικτύου&quot;</em>, μπορείτε να κατεβάσετε το σχετικό υλικό από το eclass.</p>
+<p>Τέλος όσοι ενδιαφέρονται μπορούν να αναλάβουν εργασίες στο θέμα αυτό, στο πλαίσιο του μαθήματος <em>Εισαγωγή στην Επιστήμη του Ηλεκτρολόγου Μηχανικού</em>, είναι ευκαιρία να βάλουν σε πράξη αφενός τις γνώσεις Python που αποκτήσατε στο προηγούμενο εξάμηνο, αφετέρου τα νέα στοιχεία που έχουν εισαχθεί σε αυτή τη διάλεξη.</p>
+
+</body>
+</html>
