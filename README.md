@@ -6,7 +6,7 @@
  * [Κώδικας εφαρμογής pythonquiz](https://github.com/navouris/Y210-web-technologies/tree/main/pythonquiz)
  * [Κώδικας εφαρμογής quiz-server](https://github.com/navouris/Y210-web-technologies/tree/main/quiz-server)
 
-Η ενότητα αυτή περιλαμβάνει τα εξής θέματα:
+Η ενότητα αυτή περιέχει σύντομη εισαγωγή στα εξής θέματα:
 
 - Εισαγωγή στο διαδίκτυο
 - HTTP

@@ -400,10 +400,10 @@ code {
     <span class="hljs-keyword">except</span>:
         print(<span class="hljs-string">'error opening'</span>, url)
 </div></code></pre>
-<p>Ένα παράδειγμα χρήσης:</p>
+<p>(o κώδικας)[example1-http.py]
+Ένα παράδειγμα χρήσης:</p>
 <pre>
 url:http://hci.ece.upatras.gr/
-
 RESPONSE STATUS:  200
 RESPONSE HEADER
 Date                           Sat, 27 Mar 2021 12:30:29 GMT
@@ -416,9 +416,9 @@ Content-Length                 9848
 Keep-Alive                     timeout=5, max=100
 Connection                     Keep-Alive
 Content-Type                   text/html; charset=UTF-8
-
 </pre>
 <p>Πειραμαστιστείτε με το πρόγραμμα αυτό στέλνοντας μηνύματα σε διάφορες διευθύνσεις του διαδικτύου, δέστε προσεκτικά την κεφαλίδα της απόκρισης που πήρατε, μπορείτε να βγάλετε συμπεράσματα για το τι τύπου είναι ο εξυπηρετητής που σάς απάντησε (είναι η κεφαλίδα <code>Server</code>), τι τύπου είναι η απόκριση, (<code>Content-Type</code>), αν επισυνάπτονται αρχεία cookies και τι διάρκεια ζωής έχουν (<code>Set-Cookie</code>), κλπ. )</p>
+<p>Επίσης σκεφτείτε με ποιον τρόπο θα μπορούσατε να χρονομετρήσετε το συνολικό χρόνο από την αποστολή του αιτήματος μέχρι την παραλαβή της απόκρισης (χρήση της <code>time.process_time()</code>)</p>
 <h4 id="%CF%83%CF%85%CE%BD%CE%B7%CE%B8%CE%B9%CF%83%CE%BC%CE%AD%CE%BD%CE%BF%CE%B9-%CE%BA%CF%89%CE%B4%CE%B9%CE%BA%CE%BF%CE%AF-%CF%83%CE%B5-%CE%BC%CE%B7%CE%BD%CF%8D%CE%BC%CE%B1%CF%84%CE%B1-%CE%B1%CF%80%CF%8C%CE%BA%CF%81%CE%B9%CF%83%CE%B7%CF%82-http">Συνηθισμένοι κωδικοί σε μηνύματα απόκρισης HTTP:</h4>
 <p>Στο προηγούμενο παράδειγμα παρατηρήσαμε ότι το Response status ήταν 200, αυτό σημαίνει ότι το μήνυμα μας το επεξεργάστηκε ο εξυπηρετητής με επιτυχία, ωστόσο έχει ενδιαφέρον να διερευνήσουμε τι άλλους κωδικούς κατάστασης της απόκρισης μπορεί να λάβουμε και ποια η σημασία των κωδικών αυτών.</p>
 <p>Παρακάτω ακολουθεί ένας συνοπτικός πίνακας.</p>
@@ -438,6 +438,7 @@ Content-Type                   text/html; charset=UTF-8
 <div style="page-break-after: always;"></div>
 <h2 id="2-%CE%B7-%CE%B3%CE%BB%CF%8E%CF%83%CF%83%CE%B1-%CF%83%CF%85%CE%B3%CE%B3%CF%81%CE%B1%CF%86%CE%AE%CF%82-%CE%B9%CF%83%CF%84%CE%BF%CF%83%CE%B5%CE%BB%CE%AF%CE%B4%CF%89%CE%BD-html--%CE%B3%CE%BB%CF%8E%CF%83%CF%83%CE%B1-%CE%BC%CE%BF%CF%81%CF%86%CE%BF%CF%80%CE%BF%CE%AF%CE%B7%CF%83%CE%B7%CF%82-css">2. Η γλώσσα συγγραφής ιστοσελίδων HTML / γλώσσα μορφοποίησης CSS</h2>
 <p>H HTML είναι γλώσσα επισημείωσης περιεχομένου (markup) για την οργάνωση μιας ιστοσελίδας, με τη γλώσσα αυτή ορίζουμε το περιεχόμενο και τη δομή μιας ιστοσελίδας.</p>
+<p>Ας δούμε στη συνέχεια τη δομή ενός τυπικού αρχείου HTML:</p>
 <pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
@@ -456,19 +457,21 @@ Content-Type                   text/html; charset=UTF-8
     <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </div></code></pre>
-<p><strong>Το αποτέλεσμα</strong></p>
+<p>Το αρχείο αυτό παράγει το παρακάτω αποτέλεσμα:</p>
 <img src="first.png" width=150>
+<p>Όπως παρατηρούμε το αρχείο μετά την αρχική δήλωση στην πρώτη γραμμή που λέει στον φυλλομετρητή ότι είναι έγγραφο HTML5, στη συνέχει έχουμε μια ιεραρχία από στοιχεία με ρίζα το στοιχείο <code>&lt;html&gt;</code> και παιδιά του τα στοιχεία <code>&lt;head&gt;</code> και <code>&lt;body&gt;</code>, που και αυτά με τη σειρά τους περιέχουν άλλα στοιχεία.</p>
 <p>Ένα στοιχείο HTML έχει την εξής δομή:</p>
 <pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">etiketa</span> παράμετρος=<span class="hljs-string">"τιμή"</span>&gt;</span> περιεχόμενο <span class="hljs-tag">&lt;/<span class="hljs-name">etiketa</span>&gt;</span>
 </div></code></pre>
 <p>ένα παράδειγμα:</p>
 <pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"p1"</span>&gt;</span> καλημέρα <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 </div></code></pre>
+<p>Στη συνέχεια περιγράφονται οι βασικές ετικέτες με τις οποίες μπορούμε να δημιουργήσουμε στοιχεία HTML.</p>
 <h3 id="%CF%84%CF%85%CF%80%CE%B9%CE%BA%CE%AD%CF%82-%CE%B5%CF%84%CE%B9%CE%BA%CE%AD%CF%84%CE%B5%CF%82">Τυπικές ετικέτες</h3>
 <ul>
 <li><code>&lt;html&gt;, &lt;head&gt;, &lt;body&gt;</code> ετικέτες δόμησης του εγγράφου</li>
 <li><code>&lt;meta&gt;</code> μετα-δεδομένα στην κεφαλίδα του εγγράφου</li>
-<li><code>&lt;style&gt;</code> εισαγωγή κανόνων μορφοποίησης (CSS)</li>
+<li><code>&lt;style&gt;</code> εισαγωγή κανόνων μορφοποίησης (CSS), σε επόμενη ενότητα θα περιγράψουμε τη σύνταξή τους.</li>
 <li><code>&lt;script&gt;</code> εισαγωγή κώδικα JavaScript</li>
 <li><code>&lt;h1&gt;...&lt;/h1&gt;, &lt;h2&gt;, ... &lt;h6&gt;</code> Επικεφαλίδες διαφόρων επιπέδων</li>
 <li><code>&lt;ul&gt; …&lt;/ul&gt;</code> 	Μη διατεταγμένη λίστα</li>
@@ -494,41 +497,41 @@ Content-Type                   text/html; charset=UTF-8
 <p>Έστω ότι θέλουμε να ζητήσουμε από τον χρήστη να διαλέξει μια από τις πιθανές απαντήσεις στο παρακάτω ερώτημα:</p>
 <img width="300" src="quiz.png" style="border:1px solid gray">
 <p>Ο παρακάτω κώδικας HTML υλοποιεί την παραπάνω συμπεριφορά:</p>
-<pre class="hljs"><code><div>    <span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"quiz"</span>&gt;</span>
-        Τι θα τυπώσει το παρακάτω πρόγραμμα;
-        <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>
-    def f():
-        a = 7
-        print(a, end = ' ')
-    a = 5
-    f()
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"quiz"</span>&gt;</span>
+    Τι θα τυπώσει το παρακάτω πρόγραμμα;
+    <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>
+def f():
+    a = 7
     print(a, end = ' ')
-        <span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-        Απάντηση (επιλέξτε):
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"answer"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span>&gt;</span> 5 5<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"answer"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"2"</span>&gt;</span> 7 5<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"answer"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"3"</span>&gt;</span> 7 7<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"answer"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"4"</span>&gt;</span> NameError<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"answer"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"5"</span>&gt;</span> δεν γνωρίζω<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Υποβολή<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+a = 5
+f()
+print(a, end = ' ')
+    <span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+    Απάντηση (επιλέξτε):
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"answer"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span>&gt;</span> 5 5<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"answer"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"2"</span>&gt;</span> 7 5<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"answer"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"3"</span>&gt;</span> 7 7<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"answer"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"4"</span>&gt;</span> NameError<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"answer"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"5"</span>&gt;</span> δεν γνωρίζω<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Υποβολή<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 </div></code></pre>
-<p>(Την πλήρη λύση θα βρείτε στο αρχείο <code>question.html</code>)</p>
+<p>(Την πλήρη λύση θα βρείτε στο αρχείο <code>example2-question.html</code>)</p>
 <p>Να σημειωθεί ότι δημιουργήσαμε μια φόρμα <code>&lt;form&gt;</code> μέσα στην οποία τοποθετήσαμε κείμενο και κώδικα (στοιχείο <code>&lt;pre&gt;</code>), καθώς και μια σειρά από στοιχεία <code>&lt;input type=&quot;radio&quot;&gt;</code> με κοινό <code>name</code>, όταν ο χρήστης επιλέξει ένα από αυτά και υποβάλουμε την φόρμα, θα επιστρέψει την αντίστοιχη τιμή <code>value</code>.</p>
 <p>Περισσότερες οδηγίες για τη σύνταξη της HTML μπορείτε να βρείτε στο <a href="https://www.w3schools.com/html/default.asp">w3 HTML Tutorial</a></p>
 <h3 id="%CE%BA%CE%B1%CE%BD%CF%8C%CE%BD%CE%B5%CF%82-css">Κανόνες CSS</h3>
-<p>Ένας κανόνας CSS ορίζει την εμφάνιση των στοιχείων HTML της ιστοσελίδας.</p>
-<p>Για παράδειγμα αν επιθυμούμε τα στοιχεία <code>&lt;h1&gt;</code> και <code>&lt;p&gt;</code> να περιέχουν κείμενο χρώματος <code>blue</code>  με εσωτερικό περιθώριο <code>1em</code> o σχετικός κανόνας CSS θα έχει την εξής μορφή:</p>
+<p>Όπως είδαμε στον αρχικό μας παράδειγμα της HTML για να εμφανιστεί το κείμενο με γραμματοσειρά &quot;sans-serif&quot; (χωρίς πατούρες,  έντονες άκρες) και με κίτρινο υπόβαθρο είχαμε ενσωματώσει στο <code>&lt;head&gt;</code>, ένα στοιχείο <code>&lt;style&gt;</code> που περιείχε κανόνες CSS. Ένας κανόνας CSS ορίζει την εμφάνιση των στοιχείων HTML της ιστοσελίδας.</p>
+<p>Για παράδειγμα αν επιθυμούμε τα στοιχεία <code>&lt;h1&gt;</code> και <code>&lt;p&gt;</code> να περιέχουν κείμενο χρώματος <code>blue</code>  με εσωτερικό περιθώριο <code>1rem</code> o σχετικός κανόνας CSS θα έχει την εξής μορφή:</p>
 <pre class="hljs"><code><div><span class="hljs-selector-tag">h1</span>, <span class="hljs-selector-tag">p</span> {
     <span class="hljs-attribute">color</span>: blue;
-    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1em</span>;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1rem</span>;
 }
 </div></code></pre>
-<p>Στο παράδειγμα αυτό οι <code>h1, p</code> λέγονται <strong>επιλογείς</strong>, οι <code>color</code>, <code>padding</code> είναι οι <strong>ιδιότητες</strong> και <code>blue</code>, <code>1em</code> είναι αντίστοιχα οι τιμές των ιδιοτήτων αυτών.</p>
+<p>Στο παράδειγμα αυτό οι <code>h1, p</code> λέγονται <strong>επιλογείς</strong>, οι <code>color</code>, <code>padding</code> είναι οι <strong>ιδιότητες</strong> και <code>blue</code>, <code>1rem</code> είναι αντίστοιχα οι τιμές των ιδιοτήτων αυτών. Να σημειωθεί εδώ ότι συνήθως 1rem= 16px.</p>
 <p>Οι επιλογείς μπορεί να αφορούν κλάσεις (πχ <code>&lt;ετικέτα class=&quot;classname&quot;&gt;</code>) ή τις ιδιότητες στοιχείων πχ <code>&lt;ετικέτα id=&quot;ταυτότητα&quot;&gt;</code></p>
 <p>Για παράδειγμα ο κανόνας</p>
 <pre class="hljs"><code><div><span class="hljs-selector-id">#myid</span> {<span class="hljs-attribute">font-size</span>: <span class="hljs-number">2rem</span>;}

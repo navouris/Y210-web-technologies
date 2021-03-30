@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ερώτηση</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <div id="quiz">
+        Τι θα τυπώσει το παρακάτω πρόγραμμα;
+        <pre>
+    def f():
+        a = 7
+        print(a, end = ' ')
+    a = 5
+    f()
+    print(a, end = ' ')
+        </pre>
+        Απάντηση (επιλέξτε):
+        </div>
+        <ol>
+            <li><input type="radio" name="answer" value="1"> 5 5</li>
+            <li><input type="radio" name="answer" value="2"> 7 5</li>
+            <li><input type="radio" name="answer" value="3"> 7 7</li>
+            <li><input type="radio" name="answer" value="4"> NameError</li>
+            <li><input type="radio" name="answer" value="5"> δεν γνωρίζω</li>
+        </ol>
+        <button>Υποβολή</button>
+    </form>
+</body>
+</html>
