@@ -13,3 +13,5 @@ Player:	kostas
 Game:	28-03-21 Sun 17:39:47	100.0
 Player:	Panayiotis
 Game:	11-04-21 Sun 19:40:56	100.0
+Player:	nikos
+Game:	12-04-21 Mon 12:03:34	20.0
