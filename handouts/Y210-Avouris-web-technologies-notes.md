@@ -772,11 +772,13 @@ Werkzeug==1.0.1
 
 * Συνδεόμαστε στον λογαριασμό μας Heroku και ακολουθούμε τις οδηγίες για να δημιουργήσουμε ένα νέο δημόσιο κλειδί SSH και στη συνέχεια να ανεβάσουμε μέσω git την εφαρμογή.
 
+```cli
     >$ heroku login
     >$ heroku git:clone -a mypythonquiz
     >$ git add .
     >$ git commit -am "έκδοση 1.0"
     >$ git push heroku master 
+```
 
 Παρατηρούμε ότι εγκαθίστανται στο dyno  η python και οι διάφορες εξαρτήσεις που έχουμε ορίσει στο αρχείο `requirements.txt`
 
